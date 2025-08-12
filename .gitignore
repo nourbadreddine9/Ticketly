@@ -1,0 +1,25 @@
+# Ignore node_modules dans le frontend
+node_modules/
+
+# Ignore node_modules dans le backend
+backend/node_modules/
+
+# Ignore les fichiers compilés de Next.js
+.next/
+
+# Ignore les fichiers temporaires/déployés
+dist/
+build/
+
+# Ignore les fichiers de configuration système
+.DS_Store
+
+# Ignore les fichiers de logs
+*.log
+
+# Ignore les fichiers env (contenant des secrets)
+.env
+backend/.env
+
+# Ignore coverage si tu fais des tests
+coverage/

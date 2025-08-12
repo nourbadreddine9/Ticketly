@@ -1,0 +1,39 @@
+/* Couleurs de la charte graphique Ticketly */
+:root {
+  --charte1: #f08080;
+  --charte2: #f4978e;
+  --charte3: #f8ad9d;
+  --charte4: #fbc4ab;
+  --charte5: #ffdab9;
+}
+
+/* Classes utilitaires pour les couleurs */
+.bg-charte1 { background-color: var(--charte1); }
+.bg-charte2 { background-color: var(--charte2); }
+.bg-charte3 { background-color: var(--charte3); }
+.bg-charte4 { background-color: var(--charte4); }
+.bg-charte5 { background-color: var(--charte5); }
+
+.text-charte1 { color: var(--charte1); }
+.text-charte2 { color: var(--charte2); }
+.text-charte3 { color: var(--charte3); }
+.text-charte4 { color: var(--charte4); }
+.text-charte5 { color: var(--charte5); }
+
+.border-charte1 { border-color: var(--charte1); }
+.border-charte2 { border-color: var(--charte2); }
+.border-charte3 { border-color: var(--charte3); }
+.border-charte4 { border-color: var(--charte4); }
+.border-charte5 { border-color: var(--charte5); }
+
+.hover\:bg-charte1:hover { background-color: var(--charte1); }
+.hover\:bg-charte2:hover { background-color: var(--charte2); }
+.hover\:bg-charte3:hover { background-color: var(--charte3); }
+.hover\:bg-charte4:hover { background-color: var(--charte4); }
+.hover\:bg-charte5:hover { background-color: var(--charte5); }
+
+.hover\:text-charte1:hover { color: var(--charte1); }
+.hover\:text-charte2:hover { color: var(--charte2); }
+.hover\:text-charte3:hover { color: var(--charte3); }
+.hover\:text-charte4:hover { color: var(--charte4); }
+.hover\:text-charte5:hover { color: var(--charte5); }
