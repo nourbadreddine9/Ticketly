@@ -2,6 +2,29 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Ticket = require("../models/Ticket");
+const { v4: uuidv4 } = require('uuid');
+
+
+// Fonction pour générer un code auto-incrémenté selon la catégorie
+async function generateSequentialCode(categorie) {
+  const prefixMap = {
+    internet: "INT",
+    facturation: "FAC",
+    RSI: "RSI",
+    téléphonie: "TÉL",
+    autre: "AUT"
+  };
+
+  const prefix = prefixMap[categorie?.toLowerCase()] || "GEN";
+
+  // Compter le nombre de tickets avec cette catégorie
+  const count = await Ticket.countDocuments({ categorie });
+
+  // Générer le code sous forme PREFIX + numéro à 3 chiffres
+  const number = String(count + 1).padStart(3, '0');
+
+  return `${prefix}${number}`;
+}
 
 // Route de test - À METTRE AVANT les autres routes
 router.get("/test-model", async (req, res) => {
@@ -25,7 +48,7 @@ router.get("/test-model", async (req, res) => {
 });
 
 // Ajouter un ticket
-router.post("/", async (req, res) => {
+/*router.post("/", async (req, res) => {
   try {
     const ticket = new Ticket(req.body);
     await ticket.save();
@@ -33,8 +56,31 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+});*/
+// ✅ POST - Créer un nouveau ticket
+router.post("/", async (req, res) => {
+  try {
+    const ticket = new Ticket({
+      id: uuidv4(),
+      message: req.body.message,
+      categorie: req.body.categorie,
+      ownerName: req.body.ownerName,
+      ownerTel: req.body.ownerTel,
+      status: req.body.status || "en attente", 
+      priorite: req.body.priorite || "medium",
+      resolver: req.body.resolver || null,
+      code: await generateSequentialCode(req.body.categorie),
+      response: req.body.response || "",
+      created_at: new Date(),
+    });
 
+    await ticket.save();
+    res.status(201).json(ticket);
+  } catch (error) {
+    console.error("❌ Erreur création ticket:", error);
+    res.status(400).json({ error: error.message });
+  }
+});
 // Lire tous les tickets
 router.get("/", async (req, res) => {
   try {
@@ -101,5 +147,7 @@ router.get("/:id", async (req, res) => {
     });
   }
 });
+
+
   
 module.exports = router;

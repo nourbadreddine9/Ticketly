@@ -59,7 +59,7 @@ export default function AuthPage() {
       }
 
       // ✅ Redirection si tout va bien
-      router.push('/');
+      router.push('/dashboard');
     } catch (error: any) {
       let message = 'Une erreur est survenue';
 
@@ -118,7 +118,7 @@ export default function AuthPage() {
 
       // Redirect to dashboard only if component is mounted
       //if (isMounted) {
-        router.push('/');
+        router.push('/dashboard');
       //}
     } catch (error) {
       console.error('Erreur lors de la connexion Google:', error);
@@ -136,7 +136,7 @@ export default function AuthPage() {
       // Simulate Microsoft login
       await new Promise(resolve => setTimeout(resolve, 1000));
       if (isMounted) {
-        router.push('/');
+        router.push('/dashboard');
       }
     } catch (error) {
       console.error('Erreur lors de la connexion Microsoft:', error);

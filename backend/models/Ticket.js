@@ -30,10 +30,12 @@ const ticketSchema = new mongoose.Schema({
   categorie: { type: String, required: true },
   ownerName: { type: String, required: true },
   ownerTel: { type: String, required: true },
-  status: { type: String, required: true },
+  //status: { type: String, required: true },
+  status: { type: String, required: false, default: 'en attente' },
   resolver: { type: String, default: null },
   code: { type: String, required: true },
-  response: { type: String, required: true },
+  //response: { type: String, required: true },
+  response: { type: String, required: false, default: '' },
   created_at: { type: Date, default: Date.now }
 });
 

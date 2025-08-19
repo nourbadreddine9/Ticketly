@@ -5,7 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase'; 
+import { auth } from '@/lib/firebase';
 
 
 export default function Sidebar() {
@@ -101,6 +101,18 @@ export default function Sidebar() {
           </div>
         </div>
       )}
+      <hr className="my-4 border-charte2 mx-6" />
+
+      <button
+        onClick={() => router.push('/dashboardC')}
+        className="flex items-center gap-3 px-6 py-3 w-full text-left hover:bg-charte2 transition-colors"
+      >
+        <div className="w-5 h-5 flex items-center justify-center">
+          <i className="ri-exchange-line text-lg"></i>
+        </div>
+        <span className="whitespace-nowrap">Passer à l’espace client</span>
+      </button>
+
 
     </div>
   );
